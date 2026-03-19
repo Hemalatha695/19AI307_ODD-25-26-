@@ -1,15 +1,17 @@
 # Ex.No:3(b) POLYMORPHISM
 
 ## QUESTION:
-
+Write a Java program demonstrating method overriding. Create a class Animal with a method sound(). Subclass it as Dog, Cat, Cow, each overriding the sound() method.
 
 ## AIM:
-
+To write a Java program that demonstrates method overriding using inheritance and polymorphism.
 
 ## ALGORITHM :
 1.	Start the program.
 2.	Import the necessary package 'java.util'
-3.	
+3.	Override the sound() method in each subclass to print specific sounds.
+4.In main(), use an Animal reference to point to each subclass object.
+5.Call the sound() method to demonstrate runtime polymorphism.
 
 
 
@@ -19,21 +21,70 @@
  ```
 /*
 Program to implement a Polymorphism using Java
-Developed by: 
-RegisterNumber:  
+Developed by: Hemalatha.A
+RegisterNumber: 212224240056
 */
 ```
 
 ## SOURCE CODE:
 
+```
+import java.util.Scanner;
 
+class Animal {
+    void sound() {
+        System.out.println("Unknown animal");
+    }
+}
 
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
 
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
 
+class Cow extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cow moos");
+    }
+}
+
+public class prog {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextLine()) {
+            String input = sc.nextLine().trim();
+            if (input.isEmpty()) continue;
+
+            Animal a;
+            switch(input.toLowerCase()) {
+                case "dog": a = new Dog(); break;
+                case "cat": a = new Cat(); break;
+                case "cow": a = new Cow(); break;
+                default: a = new Animal();
+            }
+            a.sound();
+        }
+        sc.close();
+    }
+}
+
+```
 
 
 ## OUTPUT:
+<img width="1215" height="500" alt="512456471-d08ba277-f28b-4af5-9ac8-8a8c71761ca5" src="https://github.com/user-attachments/assets/d1985088-b62c-4ae0-b2ac-db8bbef6e5a3" />
 
 
 
 ## RESULT:
+The program successfully demonstrates method overriding, showing different behaviors of the sound() method for different animal subclasses.
