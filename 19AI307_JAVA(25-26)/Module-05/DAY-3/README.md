@@ -1,15 +1,18 @@
 # Ex.No:5(C)  FILE HANDLING USING JAVA
 ## QUESTION:
-
+Write a program to count the number of words in a file.
 
 ## AIM:
-
+To Write a program to count the number of words in a file.
 
 ## ALGORITHM :
 1.	Start the program.
 2.	Import the necessary package 'java.util'
-3.	
-
+3.	Read a full line of text from the user and write it into a file using BufferedWriter.
+4.Open the same file using BufferedReader to read its contents line by line.
+5.For each line, trim it and split it into words using whitespace as the delimiter.
+6.Count all valid words and accumulate the total word count.
+7.Print the total number of words and close all streams properly.
 
 
 
@@ -18,21 +21,57 @@
  ```
 /*
 Program to implement a File Handling using Java
-Developed by: 
-RegisterNumber:  
+Developed by: Hemalatha.A
+RegisterNumber:  212224240056
 */
 ```
 
 ## SOURCE CODE:
+```
+import java.io.*;
+import java.util.Scanner;
+
+public class WordCountFile {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String fileName = "input.txt";
+
+        try {
+            String input = sc.nextLine();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+            writer.write(input);
+            writer.close();
+
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            int wordCount = 0;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] words = line.trim().split("\\s+"); 
+                if (!line.trim().isEmpty()) {
+                    wordCount += words.length;
+                }
+            }
+            reader.close();
+
+            System.out.println("Number of words in the file: " + wordCount);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            sc.close();
+        }
+    }
+}
 
 
 
 
-
-
-
+```
 ## OUTPUT:
 
+<img width="1137" height="250" alt="518652694-e0362fdd-71bc-483c-859e-bbfa808a59b7" src="https://github.com/user-attachments/assets/0f90bc79-3662-42da-b4b0-21f92115e4f0" />
 
 
 ## RESULT:
+Thus, the program to count the number of words in a file executed successfully
